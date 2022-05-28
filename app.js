@@ -1,17 +1,16 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000,()=>{
-    console.log('cargando pagina en el puerto 3000')
-});
+
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirnamr,'/views/index.html'))
+    res.sendFile(path.join(__dirname,'./views/index.html'))
 });
 
-app.get('/babbage',(req,res)=>{
-    res.sendFile(path.join(__dirname,'/views/babbage.html'))
-    });    
+ app.get('/babbage',(req,res)=>{
+     res.sendFile(path.join(__dirname,'./views/babbage.html'))
+     });    
 
 app.get('/berners-lee',(req,res)=>{
     res.sendFile(path.join(__dirname,'/views/berners-lee.html'))
@@ -34,7 +33,11 @@ app.get('/lovelace',(req,res)=>{
     });
 
 app.get('/turing',(req,res)=>{
-    res.sendFile(path.join(__dirname,'/turing/clarke.html'))
+    res.sendFile(path.join(__dirname,'/views/turing.html'))
     });       
 
-    app.use(express.static('public'));
+app.listen(PORT,()=>{
+    console.log('http://localhost:',PORT)
+    });
+
+     app.use(express.static('public'));
